@@ -1,0 +1,211 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Sticky header */
+header {
+    background-color: #333;
+    padding: 20px 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    float: left;
+    width: 150px;
+    height: auto;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Hero section with background image */
+.hero {
+    background-image: url('../images/hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 1.5s ease;
+}
+
+.hero h2 {
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-bar {
+    margin-top: 30px;
+}
+
+.search-bar input {
+    padding: 15px;
+    font-size: 16px;
+    width: 350px;
+    border: 1px solid #ccc;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.search-bar button {
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 30px 30px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Properties section */
+.properties {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.properties h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.property-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.property-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.property-item img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.property-item h3 {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.property-item p {
+    font-size: 16px;
+    color: #333;
+}
+
+.property-item button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.property-item button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+footer .social-media img {
+    width: 24px;
+    height: auto;
+    margin-left: 10px;
+}
+
+footer .social-media a:hover img {
+    filter: brightness(0.8);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .property-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input {
+        width: 250px;
+    }
+
+    .hero {
+        padding: 80px 0;
+    }
+}

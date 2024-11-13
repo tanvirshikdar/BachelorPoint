@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BachelorPoint Roommate Matching</title>
+    <link rel="stylesheet" href="roommate_matching.css">
+    <script src="roommate_matching.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .preferences-section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .preferences-section input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .matched-roommates {
+            margin-top: 20px;
+        }
+
+        .roommate-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .roommate-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .roommate-card .details {
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BachelorPoint Roommate Matching</h1>
+    </header>
+    
+    <main>
+        <section class="preferences-section">
+            <h2>Enter Preferences</h2>
+            <input type="text" placeholder="Budget">
+            <input type="text" placeholder="Preferred Location">
+            <input type="text" placeholder="Gender">
+            <button onclick="findRoommates()">Find Roommates</button>
+        </section>
+
+        <section class="matched-roommates">
+            <h2>Matched Roommates</h2>
+
+            <div class="roommate-card">
+                <img src="roommate1.jpg" alt="Roommate Image">
+                <div class="details">
+                    <p><strong>Name:</strong> Roommate 1</p>
+                    <p><strong>Budget:</strong> BDT X/month</p>
+                    <p><strong>Preferred Location:</strong> Dhaka</p>
+                </div>
+                <button onclick="contactRoommate(1)">Contact</button>
+            </div>
+
+            <div class="roommate-card">
+                <img src="roommate2.jpg" alt="Roommate Image">
+                <div class="details">
+                    <p><strong>Name:</strong> Roommate 2</p>
+                    <p><strong>Budget:</strong> BDT X/month</p>
+                    <p><strong>Preferred Location:</strong> Dhaka</p>
+                </div>
+                <button onclick="contactRoommate(2)">Contact</button>
+            </div>
+
+            <div class="roommate-card">
+                <img src="roommate3.jpg" alt="Roommate Image">
+                <div class="details">
+                    <p><strong>Name:</strong> Roommate 3</p>
+                    <p><strong>Budget:</strong> BDT X/month</p>
+                    <p><strong>Preferred Location:</strong> Dhaka</p>
+                </div>
+                <button onclick="contactRoommate(3)">Contact</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BachelorPoint. All Rights Reserved.</p>
+        <p>[Social Icons]</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BachelorPoint Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/admin_dashboard.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .action-buttons {
+            margin-top: 15px;
+        }
+
+        .login-container, .registration-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2, .registration-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input, .registration-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-container button, .registration-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover, .registration-container button:hover {
+            background-color: #45a049;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+    <script>
+        function showLogin() {
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function showDashboard() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('registration').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+        }
+
+        function registerAdmin() {
+            // Add admin registration logic here
+            alert('Admin registered successfully!');
+            showLogin();
+        }
+
+        function loginAdmin() {
+            // Add admin login logic here
+            showDashboard();
+        }
+    </script>
+</head>
+<body>
+    <div id="registration" class="registration-container">
+        <h2>Admin Registration</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number" required>
+        
+        <input type="text" placeholder="Address" required>
+        <input type="text" placeholder="City" required>
+        <input type="text" placeholder="Country" required>
+        <input type="text" placeholder="Postal Code" required>
+        <button onclick="registerAdmin()">Register</button>
+        <p style="text-align: center; margin-top: 10px;">Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+
+    <div id="login" class="login-container" style="display: none;">
+        <h2>Admin Login</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button onclick="loginAdmin()">Login</button>
+    </div>
+
+    <div id="dashboard">
+        <header>
+            <h1>BachelorPoint Admin Dashboard</h1>
+            <nav>
+                <a href="#user-management">User Management</a>
+                <a href="#property-management">Property Verification</a>
+                <a href="#analytics">Analytics</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="user-management">
+                <h2>User Management</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>JohnDoe</td>
+                            <td>john@example.com</td>
+                            <td>Active</td>
+                            <td>
+                                <button onclick="manageUserAccount(1, 'suspend')">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>JaneSmith</td>
+                            <td>jane@example.com</td>
+                            <td>Suspended</td>
+                            <td>
+                                <button onclick="manageUserAccount(2, 'activate')">Activate</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="property-management">
+                <h2>Property Verification</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property ID</th>
+                            <th>Title</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Modern Apartment</td>
+                            <td>Dhaka</td>
+                            <td>Pending</td>
+                            <td>
+                                <button onclick="verifyPropertyListing(101, 'approve')">Approve</button>
+                                <button onclick="verifyPropertyListing(101, 'reject')">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Cozy Studio</td>
+                            <td>Chittagong</td>
+                            <td>Approved</td>
+                            <td>
+                                <button onclick="verifyPropertyListing(102, 'reject')">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="analytics">
+                <h2>Platform Analytics</h2>
+                <ul>
+                    <li>Generate Usage and Performance Reports</li>
+                    <li>Track Platform Activity and Engagement Metrics</li>
+                </ul>
+                <div class="action-buttons">
+                    <button onclick="generateAnalyticsReport()">Generate Report</button>
+                </div>
+                <div id="analytics-report" style="margin-top: 20px;">
+                    <!-- Analytics report will be displayed here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 BachelorPoint. All Rights Reserved.</p>
+                <p>[Social Icons]</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
