@@ -1,4 +1,7 @@
 import React from 'react';
+import Header from '../components/Header';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import '../assets/css/styles.css';
 
 import heroImage from '../assets/images/hero-image.jpg';
@@ -9,21 +12,8 @@ import property3 from '../assets/images/property3.jpg';
 const Home = () => {
   return (
     <div>
-      {/* Header */}
-      <header className="header">
-        <h1>BachelorPoint</h1>
-      </header>
-
-      {/* Navigation */}
-      <nav className="navbar">
-        <ul className="nav-list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/properties">Properties</a></li>
-          <li><a href="/roommate-matching">Roommate Matching</a></li>
-          <li><a href="/about-us">About Us</a></li>
-          <li><a href="/contact-us">Contact Us</a></li>
-        </ul>
-      </nav>
+      <Header />
+      <Navbar />
 
       {/* Hero Section */}
       <section 
@@ -83,17 +73,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2024 BachelorPoint. All Rights Reserved.</p>
-          <div className="social-media">
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" className="social-icon" /></a>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" className="social-icon" /></a>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" className="social-icon" /></a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
