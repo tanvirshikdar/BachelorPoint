@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import "../assets/css/styles.css";
 
 const Properties = () => {
@@ -21,19 +23,8 @@ const Properties = () => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="logo">BachelorPoint</h1>
-      </header>
-
-      <nav className="nav">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/properties" className="active">Properties</Link></li>
-          <li><Link to="/roommate-matching">Roommate Matching</Link></li>
-          <li><Link to="/about-us">About Us</Link></li>
-          <li><Link to="/contact-us">Contact Us</Link></li>
-        </ul>
-      </nav>
+      <Header />
+      <Navbar />
 
       <section className="filter-section">
         <select id="offerType" onChange={handleFilterChange}>
@@ -84,14 +75,7 @@ const Properties = () => {
         />
       </section>
 
-      <footer className="footer">
-        <p>&copy; 2024 BachelorPoint. All Rights Reserved.</p>
-        <div className="social-icons">
-          <a href="#"><img src="../assets/images/facebook-icon.png" alt="Facebook" /></a>
-          <a href="#"><img src="../assets/images/twitter-icon.png" alt="Twitter" /></a>
-          <a href="#"><img src="../assets/images/instagram-icon.png" alt="Instagram" /></a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
