@@ -310,6 +310,92 @@ nav ul li a.active {
 }
 
 /* ================================
+   Roommate Matching Page Styles
+================================= */
+
+/* Preferences Section */
+.preferences-section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .preferences-section h2 {
+    margin-bottom: 15px;
+    color: black;
+  }
+  
+  .preferences-section input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .preferences-section button {
+    padding: 15px 25px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .preferences-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Matched Roommates Section */
+  .matched-roommates h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .roommate-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .roommate-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .roommate-card .details {
+    flex-grow: 1;
+  }
+  
+  .roommate-card .details p {
+    margin: 5px 0;
+    color: black;
+  }
+  
+  .roommate-card button {
+    padding: 10px 20px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .roommate-card button:hover {
+    background-color: #218838;
+  }
+
+/* ================================
    About Section
 ================================= */
 
@@ -330,6 +416,102 @@ nav ul li a.active {
     line-height: 1.5;
     margin-bottom: 10px;
 }
+
+/* ================================
+   Contact Us Page Styles
+================================= */
+
+/* Contact Section */
+.contact-section {
+    padding: 40px;
+    background-color: white;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: black;
+  }
+  
+  .contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-section input,
+  .contact-section textarea {
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .contact-section textarea {
+    resize: vertical;
+    height: 150px;
+  }
+  
+  .contact-section button {
+    padding: 15px;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .contact-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Team Section */
+  .team-section {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  .team-section h2 {
+    margin-bottom: 30px;
+    color: black;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .team-member {
+    background-color: white;
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .team-member h3 {
+    margin-bottom: 5px;
+    color: #007bff; /* Blue text for names */
+  }
+  
+  .team-member p {
+    color: black;
+  } 
 
 /* ================================
    Footer
