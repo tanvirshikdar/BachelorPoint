@@ -1,3 +1,7 @@
+/* ================================
+   Reset and Global Styles
+================================= */
+
 /* Reset basic styles */
 * {
     margin: 0;
@@ -5,18 +9,24 @@
     box-sizing: border-box;
 }
 
+/* Global Body Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: white; /* White background for simplicity */
     color: black; /* Default text color is black */
 }
 
+/* Container */
 .container {
     width: 80%;
     margin: 0 auto;
 }
 
-/* Sticky header */
+/* ================================
+   Header and Navigation
+================================= */
+
+/* Header Styles */
 header {
     background-color: white; /* White background for the header */
     padding: 15px 0;
@@ -30,6 +40,7 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
 }
 
+/* Logo in Header */
 header .logo {
     font-size: 28px;
     font-weight: bold;
@@ -69,13 +80,14 @@ nav ul li a {
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+/* Hover and Active States for Navigation Links */
 nav ul li a:hover,
 nav ul li a.active {
     background-color: #007bff; /* Blue background for hover/active */
     color: white; /* White text for hover/active */
 }
 
-/* Responsive Navigation Menu */
+/* Hamburger Menu for Responsive Navigation */
 .hamburger-menu {
     display: none;
     font-size: 24px;
@@ -85,32 +97,9 @@ nav ul li a.active {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background: white; /* Match header background */
-        padding: 10px 0;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        text-align: center;
-    }
-}
+/* ================================
+   Hero Section
+================================= */
 
 /* Hero section with background image */
 .hero {
@@ -140,7 +129,10 @@ nav ul li a.active {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Improve readability */
 }
 
-/* Search Bar */
+/* ================================
+   Search Bar
+================================= */
+
 .search-bar {
     margin-top: 30px;
     display: flex;
@@ -172,7 +164,11 @@ nav ul li a.active {
     background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Properties section */
+/* ================================
+   Properties Section
+================================= */
+
+/* Section Heading */
 .properties {
     padding: 50px 0;
     text-align: center;
@@ -185,11 +181,37 @@ nav ul li a.active {
     color: black; /* Black text for title */
 }
 
+/* Featured Properties on Homepage - Horizontal Layout */
+.featured-property-list {
+    display: flex;
+    justify-content: space-between; /* Space out the items horizontally */
+    gap: 20px; /* Space between each property card */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.featured-property-list .property-item {
+    background-color: white; /* White background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 30%; /* Adjust width for horizontal layout */
+    max-width: 300px; /* Restrict maximum width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center-align content */
+}
+
+.featured-property-list .property-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Properties Page - Vertical Layout */
 .property-list {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column; /* Vertical layout */
+    align-items: center; /* Center-align items */
+    gap: 20px; /* Add spacing between items */
+    width: 100%; /* Full-width container */
 }
 
 .property-item {
@@ -197,10 +219,10 @@ nav ul li a.active {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    width: 30%;
-    max-width: 300px;
+    width: 80%; /* Adjust width for vertical layout */
+    max-width: 600px; /* Restrict maximum width */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
+    text-align: left; /* Align content to the left for readability */
 }
 
 .property-item:hover {
@@ -226,6 +248,13 @@ nav ul li a.active {
     margin: 5px 0;
 }
 
+.property-item .action-buttons {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .property-item button {
     padding: 10px 20px;
     background-color: #007bff; /* Blue button */
@@ -240,7 +269,72 @@ nav ul li a.active {
     background-color: #0056b3;
 }
 
-/* Footer */
+/* Filter Section */
+.filter-section {
+    background-color: white;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.filter-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-width: 180px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}
+
+/* ================================
+   About Section
+================================= */
+
+.about-section {
+    text-align: center;
+    padding: 20px 15px;
+    margin: 30px auto;
+}
+
+.about-section h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* ================================
+   Footer
+================================= */
+
 footer {
     background-color: white; /* White footer */
     color: black;
@@ -265,7 +359,11 @@ footer .social-media a:hover img {
     filter: brightness(0.8);
 }
 
-/* Animations */
+/* ================================
+   Animations
+================================= */
+
+/* Fade-in Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -275,27 +373,69 @@ footer .social-media a:hover img {
     }
 }
 
-/* Responsive Design */
+/* ================================
+   Responsive Design
+================================= */
+
 @media (max-width: 768px) {
+    /* Header Adjustments */
     header {
         flex-direction: column;
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
+    /* Hamburger Menu Display */
+    .hamburger-menu {
+        display: block;
     }
 
+    /* Navigation Menu Adjustments */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: white; /* Match header background */
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+
+    /* Property List Adjustments */
     .property-list {
         flex-direction: column;
         align-items: center;
     }
 
+    /* Search Bar Adjustments */
     .search-bar input {
         width: 250px;
     }
 
+    /* Hero Section Adjustments */
     .hero {
         padding: 80px 0;
+    }
+
+    /* About Section Adjustments */
+    .about-section {
+        padding: 15px;
+    }
+
+    .about-section h1 {
+        font-size: 24px;
+    }
+
+    .about-section p {
+        font-size: 14px;
     }
 }

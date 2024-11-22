@@ -44,7 +44,7 @@ const Home = () => {
       <section className="properties">
         <div className="container">
           <h2 className="section-title">Featured Properties</h2>
-          <div className="property-list">
+          <div className="featured-property-list">
             {/* Property 1 */}
             <div className="property-item">
               <img src={property1} alt="Modern Apartment in Dhaka" className="property-image" />

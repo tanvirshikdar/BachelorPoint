@@ -6,10 +6,11 @@ import "../assets/css/styles.css";
 
 const Properties = () => {
   const [filters, setFilters] = useState({
-    offerType: "any",
-    propertyType: "any",
     location: "any",
     priceRange: "",
+    bedrooms: "",
+    bathrooms: "",
+    floorArea: "",
   });
 
   const filterProperties = () => {
@@ -27,30 +28,50 @@ const Properties = () => {
       <Navbar />
 
       <section className="filter-section">
-        <select id="offerType" onChange={handleFilterChange}>
-          <option value="any">Any Offer</option>
-          <option value="for_sale">For Sale</option>
-          <option value="for_rent">For Rent</option>
-        </select>
-        <select id="propertyType" onChange={handleFilterChange}>
-          <option value="any">Any Type</option>
-          <option value="apartment">Apartment</option>
-          <option value="house">House</option>
-          <option value="studio">Studio</option>
-        </select>
-        <select id="location" onChange={handleFilterChange}>
-          <option value="any">Any Location</option>
-          <option value="bashundhara">Bashundhara R-A</option>
-          <option value="gulshan">Gulshan</option>
-          <option value="banani">Banani</option>
-        </select>
-        <input
-          type="text"
-          id="priceRange"
-          placeholder="Price Range"
-          onChange={handleFilterChange}
-        />
-        <button onClick={filterProperties}>Search</button>
+        <div className="filter-container">
+          <select id="location" onChange={handleFilterChange} className="filter-input">
+            <option value="any">Any Location</option>
+            <option value="bashundhara">Bashundhara R-A</option>
+            <option value="gulshan">Gulshan</option>
+            <option value="banani">Banani</option>
+          </select>
+
+          <input
+            type="text"
+            id="priceRange"
+            placeholder="Price Range (e.g., 10,000-20,000)"
+            onChange={handleFilterChange}
+            className="filter-input"
+          />
+
+          <input
+            type="number"
+            id="bedrooms"
+            placeholder="Bedrooms"
+            onChange={handleFilterChange}
+            className="filter-input"
+          />
+
+          <input
+            type="number"
+            id="bathrooms"
+            placeholder="Bathrooms"
+            onChange={handleFilterChange}
+            className="filter-input"
+          />
+
+          <input
+            type="text"
+            id="floorArea"
+            placeholder="Floor Area (e.g., 1500 sqft)"
+            onChange={handleFilterChange}
+            className="filter-input"
+          />
+
+          <button onClick={filterProperties} className="filter-button">
+            Search
+          </button>
+        </div>
       </section>
 
       <section className="property-list">
