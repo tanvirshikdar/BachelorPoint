@@ -1,14 +1,46 @@
 import React from 'react';
 
+/**
+ * Footer component that displays the footer section of the page.
+ * It includes the copyright notice and links to social media platforms.
+ * 
+ * @returns {JSX.Element} The rendered footer component.
+ */
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
+        {/* Displaying copyright notice */}
         <p>&copy; 2024 BachelorPoint. All Rights Reserved.</p>
+        
+        {/* Social media links */}
         <div className="social-media">
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" className="social-icon" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" className="social-icon" /></a>
-          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" className="social-icon" /></a>
+          {/* Facebook icon link */}
+          <a href="#">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/145/145802.png"
+              alt="Facebook"
+              className="social-icon"
+            />
+          </a>
+          
+          {/* Twitter icon link */}
+          <a href="#">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+              alt="Twitter"
+              className="social-icon"
+            />
+          </a>
+          
+          {/* Instagram icon link */}
+          <a href="#">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+              alt="Instagram"
+              className="social-icon"
+            />
+          </a>
         </div>
       </div>
     </footer>
