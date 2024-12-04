@@ -47,7 +47,7 @@ function App() {
           <Route
             path="/bachelor-dashboard"
             element={
-              <PrivateRoute roles={['bachelor']}>
+              <PrivateRoute role="bachelor">
                 <BachelorDashboard />
               </PrivateRoute>
             }
@@ -55,7 +55,7 @@ function App() {
           <Route
             path="/landlord-dashboard"
             element={
-              <PrivateRoute roles={['landlord']}>
+              <PrivateRoute role="landlord">
                 <LandlordDashboard />
               </PrivateRoute>
             }
@@ -63,7 +63,7 @@ function App() {
           <Route
             path="/admin-dashboard"
             element={
-              <PrivateRoute roles={['admin']}>
+              <PrivateRoute role="admin">
                 <AdminDashboard />
               </PrivateRoute>
             }

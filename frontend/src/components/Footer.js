@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Social media links */}
         <div className="social-media">
           {/* Facebook icon link */}
-          <a href="#">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn-icons-png.flaticon.com/512/145/145802.png"
               alt="Facebook"
@@ -25,7 +25,7 @@ const Footer = () => {
           </a>
           
           {/* Twitter icon link */}
-          <a href="#">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
               alt="Twitter"
@@ -34,7 +34,7 @@ const Footer = () => {
           </a>
           
           {/* Instagram icon link */}
-          <a href="#">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
               alt="Instagram"
