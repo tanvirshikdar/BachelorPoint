@@ -73,7 +73,7 @@ const Navbar = () => {
             <li><Link to="/register">Register</Link></li>
           </>
         ) : (
-          <li><button onClick={handleLogout}>Logout</button></li>
+          <li><Link to="#" onClick={handleLogout}>Logout</Link></li>
         )}
         <li><Link to="/about-us">About Us</Link></li>
         <li><Link to="/contact-us">Contact Us</Link></li>
