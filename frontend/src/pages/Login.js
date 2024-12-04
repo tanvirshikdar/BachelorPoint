@@ -26,9 +26,7 @@ const Login = () => {
 
     try {
       const response = await login(formData.email, formData.password);
-      const { token, user } = response;
-      
-      localStorage.setItem('token', token);
+      const { user } = response;
       
       // Role-based redirection
       switch(user.role.toLowerCase()) {

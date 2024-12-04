@@ -2,9 +2,8 @@ import React from 'react';
 import '../assets/css/styles.css';
 
 // Importing team member images
-import team2 from '../assets/images/team2.jpg';
-import team3 from '../assets/images/team3.jpg';
-import team4 from '../assets/images/team4.jpg';
+import team2 from '../assets/images/developer.jpg';
+import team4 from '../assets/images/tester.jpg';
 
 /**
  * ContactUs component that renders the contact form and the team section.
@@ -37,23 +36,24 @@ const ContactUs = () => {
         <div className="team-members">
           {/* Team member 1 */}
           <div className="team-member">
-            <img src={team2} alt="Jane Smith" />
-            <h3>Jane Smith</h3>
-            <p>Marketing Head</p>
+            <img src={team2} alt="Tanvir Shikdar" />
+            <h3>Tanvir Shikdar</h3>
+            <div className="member-details">
+              <p className="role">Developer</p>
+              <p className="department">Computer Science & Engineering</p>
+              <p className="university">North South University</p>
+            </div>
           </div>
           
           {/* Team member 2 */}
           <div className="team-member">
-            <img src={team3} alt="Michael Johnson" />
-            <h3>Michael Johnson</h3>
-            <p>Operations Manager</p>
-          </div>
-          
-          {/* Team member 3 */}
-          <div className="team-member">
-            <img src={team4} alt="Emily White" />
-            <h3>Emily White</h3>
-            <p>Customer Support Lead</p>
+            <img src={team4} alt="Sheik Hassan​" />
+            <h3>Sheik Hassan​</h3>
+            <div className="member-details">
+              <p className="role">Tester</p>
+              <p className="department">Computer Science & Engineering</p>
+              <p className="university">North South University</p>
+            </div>
           </div>
         </div>
       </section>

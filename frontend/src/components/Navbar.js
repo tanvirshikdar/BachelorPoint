@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'; // React library and hooks
-import { Link } from 'react-router-dom';            // Link component from react-router-dom for navigation
+import { Link, useNavigate } from 'react-router-dom';            // Link component from react-router-dom for navigation
+import { logout } from '../services/authService'; // Logout function from authService
 
 /**
  * Navbar component that renders the navigation bar for the website.
@@ -15,24 +16,48 @@ import { Link } from 'react-router-dom';            // Link component from react
 const Navbar = () => {
   // State to manage user authentication status
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   /**
    * useEffect hook runs on component mount to check if the user is authenticated.
    * It checks for a JWT token in localStorage and updates the `isAuthenticated` state accordingly.
    */
+  
   useEffect(() => {
-    const token = localStorage.getItem('token'); // Check if token exists in localStorage
-    setIsAuthenticated(!!token); // If token exists, set isAuthenticated to true
+    // Check authentication status whenever localStorage changes
+    const checkAuth = () => {
+      const token = localStorage.getItem('token');
+      setIsAuthenticated(!!token);
+    };
+
+    // Initial check
+    checkAuth();
+
+    // Add event listener for storage changes
+    window.addEventListener('storage', checkAuth);
+    // Also listen for custom auth change events
+    window.addEventListener('authChange', checkAuth);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('authChange', checkAuth);
+    };
   }, []);
 
   /**
    * handleLogout function that logs out the user by:
-   * - Removing the JWT token from localStorage.
+   * - Calling the logout service function to clean up all auth data.
    * - Updating the `isAuthenticated` state to false.
+   * - Navigating to the login page.
    */
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token to log out
-    setIsAuthenticated(false); // Update the state to reflect the logout
+    // Call the logout service function to clean up all auth data
+    logout();
+    // Update local state
+    setIsAuthenticated(false);
+    // Navigate to login page
+    navigate('/login');
   };
 
   return (
@@ -42,10 +67,6 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/properties">Properties</Link></li>
         <li><Link to="/roommate-matching">Roommate Matching</Link></li>
-        <li><Link to="/about-us">About Us</Link></li>
-        <li><Link to="/contact-us">Contact Us</Link></li>
-
-        {/* Conditionally render Login/Register or Logout based on authentication status */}
         {!isAuthenticated ? (
           <>
             <li><Link to="/login">Login</Link></li>
@@ -54,6 +75,8 @@ const Navbar = () => {
         ) : (
           <li><button onClick={handleLogout}>Logout</button></li>
         )}
+        <li><Link to="/about-us">About Us</Link></li>
+        <li><Link to="/contact-us">Contact Us</Link></li>
       </ul>
     </nav>
   );

@@ -15,10 +15,12 @@ export const login = async (email, password) => {
     localStorage.setItem('userRole', user.role);
     localStorage.setItem('userData', JSON.stringify(user));
     
-    // Return the response data (which may include user information or token)
+    // Dispatch storage event to notify components
+    window.dispatchEvent(new Event('storage'));
+    
+    // Return the response data
     return response.data;
   } catch (error) {
-    // Handle error, log it, and rethrow it for handling in the component
     console.error('Error logging in:', error.response?.data || error.message);
     throw error;
   }
@@ -41,10 +43,13 @@ export const register = async (userData) => {
 
 // Logout Function
 export const logout = () => {
-  // Remove token, user role, and user data from localStorage
+  // Remove all authentication-related data from localStorage
   localStorage.removeItem('token');
   localStorage.removeItem('userRole');
   localStorage.removeItem('userData');
+  
+  // Dispatch a storage event to notify other components
+  window.dispatchEvent(new Event('storage'));
 };
 
 // Get Current User Function
