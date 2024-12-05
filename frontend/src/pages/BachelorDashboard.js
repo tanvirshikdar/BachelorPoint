@@ -45,6 +45,10 @@ const BachelorDashboard = () => {
 
   return (
     <main className="container">
+      <header className="dashboard-header">
+        <h1>Bachelor Dashboard</h1>
+        <p>Welcome, {user?.firstName} {user?.lastName}</p>
+      </header>
       <section className="profile-section">
         <div className="profile-info">
           <img src="/profile-placeholder.jpg" alt="Profile" />

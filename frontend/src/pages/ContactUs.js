@@ -47,8 +47,8 @@ const ContactUs = () => {
           
           {/* Team member 2 */}
           <div className="team-member">
-            <img src={team4} alt="Sheik Hassan​" />
-            <h3>Sheik Hassan​</h3>
+            <img src={team4} alt="Sheik Hasan" />
+            <h3>Sheik Hasan</h3>
             <div className="member-details">
               <p className="role">Tester</p>
               <p className="department">Computer Science & Engineering</p>
