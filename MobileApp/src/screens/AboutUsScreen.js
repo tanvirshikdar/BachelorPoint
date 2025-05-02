@@ -8,8 +8,13 @@ export default function AboutUsScreen() {
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        <Text style={styles.title}>About Us</Text>
-        <Text style={styles.text}>Learn more about BachelorPoint and our mission to simplify bachelor rental searches.</Text>
+        <Text style={styles.heading}>Our Mission</Text>
+        <Text style={styles.paragraph}>
+          At BachelorPoint, our mission is to provide affordable, flexible, and quality rental properties for bachelors. We understand the challenges of finding a comfortable and affordable living space, especially when you are new to the city or living alone. That's why we have built a platform that simplifies this process, giving you access to the best properties suited for your needs.
+        </Text>
+        <Text style={styles.paragraph}>
+          Whether you're a student, a young professional, or simply someone looking for a suitable living environment, our goal is to bring you a wide range of properties, modern amenities, and reliable support, all at your fingertips.
+        </Text>
       </View>
     </View>
   );
@@ -22,18 +27,23 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    padding: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 22,
+  heading: {
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 12,
     color: '#222',
+    marginBottom: 18,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
-  text: {
+  paragraph: {
     fontSize: 16,
     color: '#444',
-    textAlign: 'center',
+    marginBottom: 16,
+    lineHeight: 24,
+    textAlign: 'left',
   },
 });

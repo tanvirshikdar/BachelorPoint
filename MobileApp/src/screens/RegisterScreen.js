@@ -1,38 +1,189 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: '',
+    role: 'bachelor',
+  });
+  const [error, setError] = useState(null);
+
+  const handleChange = (key, value) => {
+    setForm({ ...form, [key]: value });
+  };
+
+  const handleRegister = () => {
+    setError(null);
+    if (form.password !== form.confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    // Registration logic (API call) would go here
+    // On success: navigation.navigate('Login');
+  };
+
   return (
     <View style={styles.container}>
       <Header />
-      <View style={styles.content}>
-        <Text style={styles.title}>Register</Text>
-        <Text style={styles.text}>Create a new account here.</Text>
-      </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={{ flex: 1 }}
+      >
+        <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
+          <View style={styles.formBox}>
+            <Text style={styles.title}>Create an Account</Text>
+            {error && <Text style={styles.error}>{error}</Text>}
+            <TextInput
+              style={styles.input}
+              placeholder="First Name"
+              value={form.firstName}
+              onChangeText={v => handleChange('firstName', v)}
+              autoCapitalize="words"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Last Name"
+              value={form.lastName}
+              onChangeText={v => handleChange('lastName', v)}
+              autoCapitalize="words"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+              value={form.email}
+              onChangeText={v => handleChange('email', v)}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Phone Number"
+              value={form.phoneNumber}
+              onChangeText={v => handleChange('phoneNumber', v)}
+              keyboardType="phone-pad"
+            />
+            <ModalSelector
+              data={[
+                { key: 'bachelor', label: 'Bachelor' },
+                { key: 'landlord', label: 'Landlord' },
+                { key: 'admin', label: 'Admin' },
+              ]}
+              initValue="Select Role"
+              accessible={true}
+              keyExtractor={item => item.key}
+              labelExtractor={item => item.label}
+              onChange={option => handleChange('role', option.key)}
+              selectedKey={form.role}
+              selectStyle={styles.input}
+              selectTextStyle={styles.selectTextStyle}
+              cancelText="Cancel"
+              value={form.role.charAt(0).toUpperCase() + form.role.slice(1)}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              value={form.password}
+              onChangeText={v => handleChange('password', v)}
+              secureTextEntry
+              autoCapitalize="none"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Confirm Password"
+              value={form.confirmPassword}
+              onChangeText={v => handleChange('confirmPassword', v)}
+              secureTextEntry
+              autoCapitalize="none"
+            />
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.link}
+              onPress={() => navigation && navigation.navigate ? navigation.navigate('Login') : null}
+            >
+              <Text style={styles.linkText}>Already have an account? Login here</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  content: {
-    flex: 1,
+  scrollContent: {
+    flexGrow: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+  },
+  formBox: {
+    backgroundColor: '#f7f7f7',
+    borderRadius: 10,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    marginBottom: 16,
+    color: '#222',
+    textAlign: 'center',
+  },
+  error: {
+    color: '#b00020',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  input: {
+    height: 44,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 6,
     marginBottom: 12,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
+    fontSize: 16,
     color: '#222',
   },
-  text: {
+  selectTextStyle: {
+    color: '#222',
     fontSize: 16,
-    color: '#444',
-    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#007bff',
+    borderRadius: 6,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  link: {
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  linkText: {
+    color: '#007bff',
+    fontSize: 15,
   },
 });
