@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 import Header from '../components/Header';
+import { AuthContext } from '../context/AuthContext';
 
 export default function RegisterScreen({ navigation }) {
   const [form, setForm] = useState({
@@ -14,19 +15,40 @@ export default function RegisterScreen({ navigation }) {
     role: 'bachelor',
   });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { register, user } = useContext(AuthContext);
 
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     setError(null);
     if (form.password !== form.confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-    // Registration logic (API call) would go here
-    // On success: navigation.navigate('Login');
+    setLoading(true);
+    const res = await register({
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      phoneNumber: form.phoneNumber,
+      password: form.password,
+      role: form.role,
+    });
+    setLoading(false);
+    if (!res.success) {
+      setError(res.message);
+      return;
+    }
+    // Redirect based on role
+    if (user && user.user && user.user.role) {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Profile' }],
+      });
+    }
   };
 
   return (
@@ -73,18 +95,13 @@ export default function RegisterScreen({ navigation }) {
               data={[
                 { key: 'bachelor', label: 'Bachelor' },
                 { key: 'landlord', label: 'Landlord' },
-                { key: 'admin', label: 'Admin' },
               ]}
               initValue="Select Role"
-              accessible={true}
-              keyExtractor={item => item.key}
-              labelExtractor={item => item.label}
               onChange={option => handleChange('role', option.key)}
-              selectedKey={form.role}
+              style={styles.input}
               selectStyle={styles.input}
-              selectTextStyle={styles.selectTextStyle}
-              cancelText="Cancel"
-              value={form.role.charAt(0).toUpperCase() + form.role.slice(1)}
+              selectedKey={form.role}
+              accessible
             />
             <TextInput
               style={styles.input}
@@ -92,7 +109,6 @@ export default function RegisterScreen({ navigation }) {
               value={form.password}
               onChangeText={v => handleChange('password', v)}
               secureTextEntry
-              autoCapitalize="none"
             />
             <TextInput
               style={styles.input}
@@ -100,16 +116,9 @@ export default function RegisterScreen({ navigation }) {
               value={form.confirmPassword}
               onChangeText={v => handleChange('confirmPassword', v)}
               secureTextEntry
-              autoCapitalize="none"
             />
-            <TouchableOpacity style={styles.button} onPress={handleRegister}>
-              <Text style={styles.buttonText}>Register</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.link}
-              onPress={() => navigation && navigation.navigate ? navigation.navigate('Login') : null}
-            >
-              <Text style={styles.linkText}>Already have an account? Login here</Text>
+            <TouchableOpacity style={styles.button} onPress={handleRegister} disabled={loading}>
+              <Text style={styles.buttonText}>{loading ? 'Registering...' : 'Register'}</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -117,7 +126,6 @@ export default function RegisterScreen({ navigation }) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

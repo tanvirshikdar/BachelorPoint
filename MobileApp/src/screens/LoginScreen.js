@@ -1,30 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, ActivityIndicator } from 'react-native';
 import Header from '../components/Header';
+import { AuthContext } from '../context/AuthContext';
 
 export default function LoginScreen({ navigation }) {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { login } = useContext(AuthContext);
 
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setError('');
     setLoading(true);
-    // Simulate login logic (replace with API call as needed)
-    setTimeout(() => {
-      setLoading(false);
+    try {
       if (form.email === '' || form.password === '') {
         setError('Please enter email and password');
+        setLoading(false);
         return;
       }
-      // On success: navigation.navigate('Dashboard') or role-based navigation
-      // For now, just clear error
-      setError('');
-    }, 1200);
+      console.log('LoginScreen: calling login', form.email);
+      const res = await login(form.email, form.password);
+      console.log('LoginScreen: login result', res);
+      if (!res.success) {
+        setError(res.message);
+        setLoading(false);
+        return;
+      }
+      if (res.user && res.user.role) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Profile' }],
+        });
+      } else {
+        setError('Login succeeded but user info is missing.');
+      }
+    } catch (e) {
+      setError('Unexpected error: ' + (e.message || 'Unknown error'));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,16 +70,9 @@ export default function LoginScreen({ navigation }) {
               value={form.password}
               onChangeText={v => handleChange('password', v)}
               secureTextEntry
-              autoCapitalize="none"
             />
             <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={loading}>
               {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Login</Text>}
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.link}
-              onPress={() => navigation && navigation.navigate ? navigation.navigate('Register') : null}
-            >
-              <Text style={styles.linkText}>Don't have an account? Register</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -69,7 +80,6 @@ export default function LoginScreen({ navigation }) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
